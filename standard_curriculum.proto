@@ -1,0 +1,19 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+/**
+Base data structure of a standard curriculum
+ */
+message StandardCurriculum {
+  string name = 1;
+  bool start_summer = 2;
+}
+
+/**
+Request to get a singular standard curriculum
+
+ */
+message StandardCurriculumRequest {
+  string name = 1;
+}
+

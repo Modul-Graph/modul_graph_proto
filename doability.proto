@@ -1,0 +1,35 @@
+syntax = "proto3";
+import "standard_curriculum.proto";
+import "google/protobuf/empty.proto";
+
+
+enum DoabilityCode {
+  /**
+  Code specifying how doable a standard curriculum is
+   */
+  DOABLE = 0; // Everything is fine
+  WARNING = 1; // Everything is fine, but there are some warnings
+  NOT_DOABLE = 2; // Not doable
+}
+
+message DoabilityResponse {
+  DoabilityCode code = 1;
+  optional string message = 2; // optional message from the server
+}
+
+service StandardCurriculumService {
+  /**
+  Get a singular standard curriculum by name
+   */
+  rpc GetStandardCurriculum(StandardCurriculumRequest) returns (StandardCurriculum) {}
+
+  /**
+  Get all standard curriculums
+   */
+  rpc GetStandardCurriculums(google.protobuf.Empty) returns (stream StandardCurriculum) {}
+
+  /**
+  Request doability for a standard curriculum
+   */
+  rpc GetDoability(StandardCurriculumRequest) returns (DoabilityResponse) {}
+}
