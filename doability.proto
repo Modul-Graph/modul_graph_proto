@@ -2,6 +2,7 @@ syntax = "proto3";
 import "standard_curriculum.proto";
 import "google/protobuf/empty.proto";
 
+package modul_graph;
 
 enum DoabilityCode {
   /**
